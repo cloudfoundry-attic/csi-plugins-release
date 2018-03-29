@@ -6,9 +6,7 @@
       "uid": 0,
       "gid": 0
     },
-    "args": [
-      "<%= p("csi-nfs-plugin.start_command") %>"
-    ],
+    "args": <%= p("csi-nfs-plugin.start_command").split %>,
     "env": [
       "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
       "TERM=xterm"
