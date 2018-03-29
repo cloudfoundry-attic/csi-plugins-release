@@ -1,0 +1,7 @@
+---
+name: csi-nfs-plugin
+
+dependencies: []
+
+files:
+- csi-nfs-plugin/rootfs.tgz

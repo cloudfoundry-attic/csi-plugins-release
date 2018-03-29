@@ -1,0 +1,4 @@
+set -e
+
+# add mapfs to rootfs
+tar -xzf csi-nfs-plugin/rootfs.tgz -C ${BOSH_INSTALL_TARGET}

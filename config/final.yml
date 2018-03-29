@@ -1,0 +1,7 @@
+---
+final_name: csi-plugin
+blobstore:
+  provider: s3
+  options:
+    bucket_name: csi-plugin-blobs
+

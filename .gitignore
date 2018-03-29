@@ -1,0 +1,25 @@
+.blobs
+blobs
+.nvim
+.nvimrc
+scripts/config
+.dev_builds
+.DS_Store
+dev_releases/**/*
+.final_builds/jobs/**/*.tgz
+.final_builds/packages/**/*.tgz
+*.swp
+config/private.yml
+config/dev.yml
+releases/csi-plugin/*.tgz
+
+## goPath system specifics
+pkg
+/bin
+
+#intellij goo
+*.iml
+
+# gosub and friends
+src/github.com/vito/gosub
+src/github.com/codegangsta/cli

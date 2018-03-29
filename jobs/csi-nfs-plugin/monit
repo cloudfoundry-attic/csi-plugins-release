@@ -1,0 +1,5 @@
+check process csi-nfs-plugin
+  with pidfile /var/vcap/sys/run/csi-nfs-plugin/csi-nfs-plugin.pid
+  start program "/var/vcap/jobs/csi-nfs-plugin/bin/ctl start"
+  stop program "/var/vcap/jobs/csi-nfs-plugin/bin/ctl stop"
+  group vcap

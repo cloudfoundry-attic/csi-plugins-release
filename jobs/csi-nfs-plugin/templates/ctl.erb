@@ -1,0 +1,37 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/csi-nfs-plugin
+LOG_DIR=/var/vcap/sys/log/csi-nfs-plugin
+PIDFILE=$RUN_DIR/csi-nfs-plugin.pid
+ROOTFS_DIR=/var/vcap/data/csi-nfs-plugin
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR $LOG_DIR $ROOTFS_DIR
+    mkdir -p "<%= p("csi-nfs-plugin.mount_root_path") %>"
+
+    [ -d  ${ROOTFS_DIR}/rootfs ] || mv /var/vcap/packages/csi-nfs-plugin/rootfs ${ROOTFS_DIR}/rootfs
+
+    echo $$ > $PIDFILE
+
+    cd /var/vcap/jobs/csi-nfs-plugin/
+
+    /var/vcap/packages/runc/bin/runc run csi-nfs-plugin \
+      >>$LOG_DIR/csi-nfs-plugin.stdout.log \
+      2>>$LOG_DIR/csi-nfs-plugin.stderr.log
+    ;;
+
+  stop)
+    /var/vcap/packages/runc/bin/runc kill csi-nfs-plugin KILL
+
+    rm -f $PIDFILE
+    ;;
+
+  *)
+  echo "Usage: ctl {start|stop}" ;;
+esac
+exit 0
+
