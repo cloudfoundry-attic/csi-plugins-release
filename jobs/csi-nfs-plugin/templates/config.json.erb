@@ -1,13 +1,13 @@
 {
   "ociVersion": "1.0.0",
   "process": {
-    "terminal": true,
+    "terminal": false,
     "user": {
       "uid": 0,
       "gid": 0
     },
     "args": [
-      "sh"
+      "<%= p("csi-nfs-plugin.start_command") %>"
     ],
     "env": [
       "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
