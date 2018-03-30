@@ -11,7 +11,7 @@ instance_groups:
     properties:
       csi-nfs-plugin:
         mount_root_path: /var/vcap/store
-        start_command: "nfsplugin --endpoint tcp://127.0.0.1:10000 --nodeid CSINode -v=5"
+        start_command: "/nfsplugin --endpoint tcp://0.0.0.0:10000 --nodeid CSINode -v=5"
   name: csi-test
   networks:
   - name: default

@@ -71,7 +71,7 @@
   },
   "root": {
     "path": "/var/vcap/data/csi-nfs-plugin/rootfs",
-    "readonly": true
+    "readonly": false
   },
   "hostname": "runc",
   "mounts": [
@@ -170,7 +170,8 @@
         "type": "pid"
       },
       {
-        "type": "network"
+        "type": "network",
+        "path": "/var/run/netns/runc"
       },
       {
         "type": "ipc"
