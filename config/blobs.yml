@@ -1,3 +1,7 @@
+csi-nfs-plugin/mapfs_linux_amd64:
+  size: 3494986
+  object_id: b48b3ebb-881d-4197-46b9-a74a4923629c
+  sha: 39494312e1fc41b81a7ebfc97c6542635f3e950c
 csi-nfs-plugin/rootfs.tgz:
   size: 140047952
   object_id: ce8c28ee-cef3-481c-5f80-02b3ec42b0c9

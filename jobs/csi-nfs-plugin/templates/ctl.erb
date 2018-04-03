@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 RUN_DIR=/var/vcap/sys/run/csi-nfs-plugin
 LOG_DIR=/var/vcap/sys/log/csi-nfs-plugin
@@ -14,7 +14,9 @@ case $1 in
     mkdir -p $RUN_DIR $LOG_DIR $ROOTFS_DIR
     mkdir -p "<%= p("csi-nfs-plugin.mount_root_path") %>"
 
-    [ -d  ${ROOTFS_DIR}/rootfs ] || mv /var/vcap/packages/csi-nfs-plugin/rootfs ${ROOTFS_DIR}/rootfs
+    if [ -d /var/vcap/packages/csi-nfs-plugin/rootfs ]; then
+      mv /var/vcap/packages/csi-nfs-plugin/rootfs ${ROOTFS_DIR}/rootfs
+    fi
 
     echo $$ > $PIDFILE
 
@@ -43,6 +45,9 @@ case $1 in
 
   stop)
     /var/vcap/packages/runc/bin/runc kill csi-nfs-plugin KILL
+
+    ifconfig runc0 down
+    brctl delbr runc0
 
     rm -f $PIDFILE
     ;;
