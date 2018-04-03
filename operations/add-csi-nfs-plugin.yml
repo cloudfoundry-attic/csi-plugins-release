@@ -1,0 +1,11 @@
+- type: replace
+  path: /instance_groups/name=diego-cell/jobs/-
+  value:
+    name: csi-nfs-plugin
+    properties: {}
+    release: csi-plugins-release
+- type: replace
+  path: /releases/-
+  value:
+    name: csi-plugins-release
+    version: latest
