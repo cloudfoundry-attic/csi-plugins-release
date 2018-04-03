@@ -2,7 +2,10 @@
   path: /instance_groups/name=diego-cell/jobs/-
   value:
     name: csi-nfs-plugin
-    properties: {}
+    properties: 
+      csi-nfs-plugin:
+        mount_root_path: "/var/vcap/store"
+        start_command: "/nfsplugin --endpoint tcp://0.0.0.0:10000 --nodeid CSINode -v=5"
     release: csi-plugin
 - type: replace
   path: /releases/-
