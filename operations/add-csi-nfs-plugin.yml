@@ -7,5 +7,5 @@
 - type: replace
   path: /releases/-
   value:
-    name: csi-plugins-release
+    name: csi-plugin
     version: latest
