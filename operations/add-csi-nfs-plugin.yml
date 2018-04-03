@@ -3,7 +3,7 @@
   value:
     name: csi-nfs-plugin
     properties: {}
-    release: csi-plugins-release
+    release: csi-plugin
 - type: replace
   path: /releases/-
   value:
