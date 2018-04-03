@@ -4,6 +4,7 @@ name: csi-nfs-plugin
 templates:
   ctl.erb: bin/ctl
   config.json.erb: config.json
+  csi-nfs-plugin.spec.erb: csi-nfs-plugin.spec
 
 packages:
 - csi-nfs-plugin
@@ -15,3 +16,6 @@ properties:
     description: "the start command for the csi nfs plugin"
   csi-nfs-plugin.listening_port:
     description: "the listening port of the csi nfs plugin"
+  csi-nfs-plugin.driver_path:
+   description: "path to place driver spec/json file for volman to discover"
+   default: "/var/vcap/data/voldrivers"
