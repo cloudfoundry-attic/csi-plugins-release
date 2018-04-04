@@ -1,0 +1,25 @@
+{
+   "id":"<%= p("csi-broker.service-id") %>",
+   "name":"<%= p("csi-broker.service-name") %>",
+   "description":"csi volume service",
+   "bindable":true,
+   "tags":[
+      "volumeService"
+   ],
+   "plan_updateable":false,
+   "plans":[
+      {
+         "id":"<%= p("csi-broker.plan-id") %>",
+         "name":"<%= p("csi-broker.plan-name") %>",
+         "description":"<%= p("csi-broker.plan-desc") %>",
+         "free":true,
+         "bindable":true,
+         "metadata":{
+            "displayName":"csi volume service"
+         }
+      }
+   ],
+   "requires":[
+      "volume_mount"
+   ]
+}

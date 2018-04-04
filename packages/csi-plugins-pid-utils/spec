@@ -1,0 +1,5 @@
+---
+name: csi-plugins-pid-utils
+
+files:
+  - pid_utils.sh

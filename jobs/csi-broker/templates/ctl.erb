@@ -1,0 +1,55 @@
+#!/bin/bash
+
+set -e -x
+
+RUN_DIR=/var/vcap/sys/run/csi-broker
+LOG_DIR=/var/vcap/sys/log/csi-broker
+PIDFILE=$RUN_DIR/csi-broker.pid
+
+source /var/vcap/packages/csi-pid-utils/pid_utils.sh
+
+case $1 in
+
+  start)
+    pid_guard $PIDFILE "csi-broker"
+
+    mkdir -p $RUN_DIR
+    chown -R vcap:vcap $RUN_DIR
+
+    mkdir -p $LOG_DIR
+    chown -R vcap:vcap $LOG_DIR
+
+    mkdir -p "<%= p("csi-broker.data-dir") %>"
+    chown -R vcap:vcap "<%= p("csi-broker.data-dir") %>"
+
+    export GOMAXPROCS=$(nproc)
+
+    # Work around for go DNS bug (fix slated for v1.7)
+    export GODEBUG=netdns=cgo
+
+    echo $$ > $PIDFILE
+
+    exec chpst -u vcap:vcap /var/vcap/packages/csibroker/bin/csibroker \
+      --listenAddr="<%= p("csi-broker.listen-addr") %>" \
+      --csiConAddr="<%= p("csi-broker.csi-controller-addr") %>" \
+      --serviceSpec="/var/vcap/jobs/csi-broker/config/service.json" \
+      --driverName="<%= p("csi-broker.driver-name") %>" \
+      --dataDir="<%= p("csi-broker.data-dir") %>" \
+      --username="<%= p("csi-broker.username") %>" \
+      --password="<%= p("csi-broker.password") %>" \
+      2> >(tee -a $LOG_DIR/csi-broker.stderr.log | logger -p user.error -t vcap.csi-broker) \
+      1> >(tee -a $LOG_DIR/csi-broker.stdout.log | logger -p user.info -t vcap.csi-broker)
+
+    ;;
+
+  stop)
+    kill_and_wait $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: csi_broker_ctl {start|stop}"
+
+    ;;
+
+esac

@@ -1,0 +1,5 @@
+check process csi-broker
+  with pidfile /var/vcap/sys/run/csi-broker/csi-broker.pid
+  start program "/var/vcap/jobs/csi-broker/bin/csi_broker_ctl start"
+  stop program "/var/vcap/jobs/csi-broker/bin/csi_broker_ctl stop"
+  group vcap

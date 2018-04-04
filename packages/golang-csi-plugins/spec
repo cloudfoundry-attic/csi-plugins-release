@@ -1,0 +1,5 @@
+---
+name: golang-csi-plugins
+
+files:
+  - golang/go1.10.linux-amd64.tar.gz

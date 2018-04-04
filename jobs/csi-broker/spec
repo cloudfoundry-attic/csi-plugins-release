@@ -1,0 +1,42 @@
+---
+name: csi-broker
+
+templates:
+  ctl.erb: bin/csi_broker_ctl
+  service.json.erb: config/service.json
+
+packages:
+- golang-csi-plugins
+- csi-plugins-pid-utils
+- csibroker
+
+properties:
+  csi-broker.listen-addr:
+    description: "address csi-broker listens on"
+    default: "0.0.0.0:8999"
+  csi-broker.csi-controller-addr:
+    description: "URL of the remote csi controller listens on"
+  csi-broker.service-name:
+    description: "name of the service to be registered with cf"
+    default: "csifs"
+  csi-broker.service-id:
+    description: "Id of the service to be registered with cf"
+    default: "csifs-service-guid"
+  csi-broker.plan-name:
+    description: "Name of the service plan to be registered with cf"
+    default: "free"
+  csi-broker.plan-id:
+    description: "Id of the service plan to be registered with cf"
+    default: "free-plan-guid"
+  csi-broker.plan-desc:
+    description: "Description of the service plan to be registered with cf"
+    default: "free csi filesystem"
+  csi-broker.data-dir:
+    description: "Directory on broker VM to persist instance and binding state"
+    default: "/var/vcap/store/csi-broker"
+  csi-broker.username:
+    description: "Basic auth username to verify on incoming Service Broker requests"
+    default: "admin"
+  csi-broker.password:
+    description: "Basic auth password to verify on incoming Service Broker requests"
+    default: "admin"
