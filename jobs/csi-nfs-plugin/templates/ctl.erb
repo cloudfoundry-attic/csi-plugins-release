@@ -36,12 +36,14 @@ case $1 in
     ip netns exec runc ip link set eth1 up
     ip netns exec runc ip route add default via 192.168.10.1
 
-    cd /var/vcap/jobs/csi-nfs-plugin/
-    
     mkdir -p /var/vcap/data/voldrivers
-    cp csi-nfs-plugin.spec <%= p("csi-nfs-plugin.driver_path") %>/csi-nfs-plugin.spec
+    cp /var/vcap/jobs/csi-nfs-plugin/csi-nfs-plugin.json <%= p("csi-nfs-plugin.driver_path") %>/csi-nfs-plugin.json
+    chown vcap:vcap <%= p("csi-nfs-plugin.driver_path") %>/csi-nfs-plugin.json
 
     #TODO: set CSI_ENDPOINT inside container (presumably thru config.json)
+
+    # config.json needs to be in the current directory for runc
+    cd /var/vcap/jobs/csi-nfs-plugin/
 
     /var/vcap/packages/runc/bin/runc run csi-nfs-plugin \
       >>$LOG_DIR/csi-nfs-plugin.stdout.log \

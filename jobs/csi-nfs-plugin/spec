@@ -4,7 +4,7 @@ name: csi-nfs-plugin
 templates:
   ctl.erb: bin/ctl
   config.json.erb: config.json
-  csi-nfs-plugin.spec.erb: csi-nfs-plugin.spec
+  csi-nfs-plugin.json.erb: csi-nfs-plugin.json
 
 packages:
 - csi-nfs-plugin
