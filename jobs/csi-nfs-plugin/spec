@@ -18,4 +18,4 @@ properties:
     description: "the listening port of the csi nfs plugin"
   csi-nfs-plugin.driver_path:
    description: "path to place driver spec/json file for volman to discover"
-   default: "/var/vcap/data/voldrivers"
+   default: "/var/vcap/data/csiplugins"

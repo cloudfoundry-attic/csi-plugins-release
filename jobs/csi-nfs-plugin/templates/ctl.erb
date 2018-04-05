@@ -36,7 +36,7 @@ case $1 in
     ip netns exec runc ip link set eth1 up
     ip netns exec runc ip route add default via 192.168.10.1
 
-    mkdir -p /var/vcap/data/voldrivers
+    mkdir -p /var/vcap/data/csiplugins
     cp /var/vcap/jobs/csi-nfs-plugin/csi-nfs-plugin.json <%= p("csi-nfs-plugin.driver_path") %>/csi-nfs-plugin.json
     chown vcap:vcap <%= p("csi-nfs-plugin.driver_path") %>/csi-nfs-plugin.json
 
