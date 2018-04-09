@@ -38,7 +38,7 @@
             component: csi-nfsbroker
           uris:
           - csi-nfsbroker.gorgophone.cf-app.com
-      csi-localbroker:
+      csi-broker:
         username: csi-nfsbroker
         password: ((csi-nfsbroker-password))
 
