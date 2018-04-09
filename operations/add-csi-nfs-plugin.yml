@@ -2,11 +2,52 @@
   path: /instance_groups/name=diego-cell/jobs/-
   value:
     name: csi-nfs-plugin
-    properties: 
+    release: csi-plugin
+    properties:
       csi-nfs-plugin:
-        mount_root_path: "/var/vcap/store"
+        mount_root_path: "/var/vcap/data/csi-nfs-plugin"
         start_command: "/nfsplugin --endpoint tcp://0.0.0.0:10000 --nodeid CSINode -v=5"
     release: csi-plugin
+
+- type: replace
+  path: /instance_groups/-
+  value:
+    name: csi-nfsbroker
+    azs:
+    - z1
+    instances: 1
+    vm_type: minimal
+    stemcell: default
+    update:
+      max_in_flight: 1
+      serial: true
+    networks:
+    - name: default
+    jobs:
+    - name: csi-broker
+      release: csi-plugin
+    - name: route_registrar
+      release: routing
+    properties:
+      route_registrar:
+        routes:
+        - name: csi-nfsbroker
+          port: 8999
+          registration_interval: 20s
+          tags:
+            component: csi-nfsbroker
+          uris:
+          - csi-nfsbroker.gorgophone.cf-app.com
+      csi-localbroker:
+        username: csi-nfsbroker
+        password: ((csi-nfsbroker-password))
+
+- type: replace
+  path: /variables/-
+  value:
+    name: csi-localbroker-password
+    type: password
+
 - type: replace
   path: /releases/-
   value:
