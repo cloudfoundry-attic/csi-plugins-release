@@ -6,7 +6,7 @@ RUN_DIR=/var/vcap/sys/run/csi-broker
 LOG_DIR=/var/vcap/sys/log/csi-broker
 PIDFILE=$RUN_DIR/csi-broker.pid
 
-source /var/vcap/packages/csi-pid-utils/pid_utils.sh
+source /var/vcap/packages/csi-plugins-pid-utils/pid_utils.sh
 
 case $1 in
 
@@ -31,9 +31,7 @@ case $1 in
 
     exec chpst -u vcap:vcap /var/vcap/packages/csibroker/bin/csibroker \
       --listenAddr="<%= p("csi-broker.listen-addr") %>" \
-      --csiConAddr="<%= p("csi-broker.csi-controller-addr") %>" \
       --serviceSpec="/var/vcap/jobs/csi-broker/config/service.json" \
-      --driverName="<%= p("csi-broker.driver-name") %>" \
       --dataDir="<%= p("csi-broker.data-dir") %>" \
       --username="<%= p("csi-broker.username") %>" \
       --password="<%= p("csi-broker.password") %>" \

@@ -16,21 +16,7 @@ properties:
     default: "0.0.0.0:8999"
   csi-broker.csi-controller-addr:
     description: "URL of the remote csi controller listens on"
-  csi-broker.service-name:
-    description: "name of the service to be registered with cf"
-    default: "csifs"
-  csi-broker.service-id:
-    description: "Id of the service to be registered with cf"
-    default: "csifs-service-guid"
-  csi-broker.plan-name:
-    description: "Name of the service plan to be registered with cf"
-    default: "free"
-  csi-broker.plan-id:
-    description: "Id of the service plan to be registered with cf"
-    default: "free-plan-guid"
-  csi-broker.plan-desc:
-    description: "Description of the service plan to be registered with cf"
-    default: "free csi filesystem"
+    default: ""
   csi-broker.data-dir:
     description: "Directory on broker VM to persist instance and binding state"
     default: "/var/vcap/store/csi-broker"
@@ -40,3 +26,25 @@ properties:
   csi-broker.password:
     description: "Basic auth password to verify on incoming Service Broker requests"
     default: "admin"
+  csi-broker.services:
+    description: "List of services and plans supported by CSI broker"
+    default:
+    - id: csi-nfs-service-id
+      name: "CSI NFS Service"
+      driver_name: csi-nfs-plugin
+      description: "CSI NFS Service (experimental)"
+      plans:
+      - id: csi-nfs-service-plan-id
+        name: "Free"
+        description: "CSI NFS Service Plan"
+        display_name: "CSI NFS Service Plan"
+    - id: csi-local-service-id
+      name: "CSI Local Service"
+      driver_name: com.github.jeffpak.local-node-plugin
+      controller_address: 127.0.0.1:9860
+      description: "CSI Local Service (experimental)"
+      plans:
+      - id: csi-local-service-plan-id
+        name: "Free"
+        description: "CSI Local Service Plan"
+        display_name: "CSI Local Service Plan"

@@ -6,6 +6,8 @@ instance_groups:
   jobs:
   - name: garden
     release: garden-runc
+  - name: csi-broker
+    release: csi-plugin
   - name: csi-nfs-plugin
     release: csi-plugin
     properties:
