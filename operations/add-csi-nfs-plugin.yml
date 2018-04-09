@@ -45,7 +45,7 @@
 - type: replace
   path: /variables/-
   value:
-    name: csi-localbroker-password
+    name: csi-nfsbroker-password
     type: password
 
 - type: replace
