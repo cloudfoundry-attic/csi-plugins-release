@@ -8,4 +8,5 @@ csi-nfs-plugin/rootfs.tgz:
   sha: 90535d4bdc6e2bba68523d53c3ce1a6beb3cca54
 golang/go1.10.linux-amd64.tar.gz:
   size: 119905205
+  object_id: 79de1033-ed80-47a5-7823-d28d165b46a2
   sha: 693e2dfd99ef2d608b41c450efd9d277bf2a7f2f
