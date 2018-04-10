@@ -20,22 +20,6 @@ case $1 in
 
     echo $$ > $PIDFILE
 
-    #TODO: put this to package
-    apt-get -y install bridge-utils
-
-    brctl addbr runc0
-    ip link set runc0 up
-    ip addr add 192.168.10.1/24 dev runc0
-    ip link add name veth-host type veth peer name veth-guest
-    ip link set veth-host up
-    brctl addif runc0 veth-host
-    ip netns add runc
-    ip link set veth-guest netns runc
-    ip netns exec runc ip link set veth-guest name eth1
-    ip netns exec runc ip addr add 192.168.10.101/24 dev eth1
-    ip netns exec runc ip link set eth1 up
-    ip netns exec runc ip route add default via 192.168.10.1
-
     mkdir -p /var/vcap/data/csiplugins
     cp /var/vcap/jobs/csi-nfs-plugin/csi-nfs-plugin.json <%= p("csi-nfs-plugin.driver_path") %>/csi-nfs-plugin.json
     chown vcap:vcap <%= p("csi-nfs-plugin.driver_path") %>/csi-nfs-plugin.json
