@@ -2,12 +2,12 @@
   path: /instance_groups/name=diego-cell/jobs/-
   value:
     name: csi-nfs-plugin
-    release: csi-plugin
+    release: csi-plugins
     properties:
       csi-nfs-plugin:
         mount_root_path: "/var/vcap/data/csi-nfs-plugin"
         start_command: "/nfsplugin --endpoint tcp://0.0.0.0:10000 --nodeid CSINode -v=5"
-    release: csi-plugin
+    release: csi-plugins
 
 - type: replace
   path: /instance_groups/-
@@ -25,7 +25,7 @@
     - name: default
     jobs:
     - name: csi-broker
-      release: csi-plugin
+      release: csi-plugins
     - name: route_registrar
       release: routing
     properties:
@@ -51,5 +51,5 @@
 - type: replace
   path: /releases/-
   value:
-    name: csi-plugin
+    name: csi-plugins
     version: latest
