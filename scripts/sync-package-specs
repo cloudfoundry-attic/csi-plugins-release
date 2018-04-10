@@ -36,8 +36,6 @@ function sync_package() {
   )
 }
 
-sync_package csi-localdriver     -app github.com/jeffpak/local-node-plugin/cmd/localnodeplugin
-sync_package csi-localcontroller -app github.com/jeffpak/local-controller-plugin/cmd/localcontrollerplugin
 sync_package csibroker           -app code.cloudfoundry.org/csibroker
 
 wait
