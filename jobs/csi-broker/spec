@@ -31,7 +31,7 @@ properties:
     default:
     - id: csi-nfs-service-id
       name: "CSI NFS Service"
-      driver_name: csi-nfs-plugin
+      driver_name: csi-nfsplugin
       description: "CSI NFS Service (experimental)"
       plans:
       - id: csi-nfs-service-plan-id
