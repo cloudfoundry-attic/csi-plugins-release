@@ -5,7 +5,6 @@
     release: csi-plugins
     properties:
       csi-nfs-plugin:
-        mount_root_path: "/var/vcap/data/csi-nfs-plugin"
         start_command: "/nfsplugin --endpoint tcp://0.0.0.0:10000 --nodeid CSINode -v=5"
     release: csi-plugins
 
