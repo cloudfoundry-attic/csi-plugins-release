@@ -12,6 +12,7 @@ packages:
 properties:
   csi-nfs-plugin.mount_root_path:
     description: "the root path where the csi nfs plugin will mount volume into"
+    default: "/var/vcap/data/csimountroot"
   csi-nfs-plugin.start_command:
     description: "the start command for the csi nfs plugin"
   csi-nfs-plugin.listening_port:

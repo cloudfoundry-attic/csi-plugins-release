@@ -78,7 +78,13 @@
     {
        "type":"bind",
        "source": "<%= p("csi-nfs-plugin.mount_root_path") %>",
-       "destination":"/tmp/mounts",
+       "destination": "<%= p("csi-nfs-plugin.mount_root_path") %>",
+       "options":["rbind"]
+    },
+    {
+       "type":"bind",
+       "source": "/etc/resolv.conf",
+       "destination": "/etc/resolv.conf",
        "options":["rbind"]
     },
     {
