@@ -5,6 +5,8 @@ RUN_DIR=/var/vcap/sys/run/csi-nfs-plugin
 LOG_DIR=/var/vcap/sys/log/csi-nfs-plugin
 PIDFILE=$RUN_DIR/csi-nfs-plugin.pid
 ROOTFS_DIR=/var/vcap/data/csi-nfs-plugin
+MOUNT_ROOT="<%= p("csi-nfs-plugin.mount_root_path") %>"
+
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -12,7 +14,8 @@ case $1 in
 
   start)
     mkdir -p $RUN_DIR $LOG_DIR $ROOTFS_DIR
-    mkdir -p "<%= p("csi-nfs-plugin.mount_root_path") %>"
+    mkdir -p $MOUNT_ROOT/csi-nfsplugin
+    chmod 777 $MOUNT_ROOT/csi-nfsplugin
 
     if [ -d /var/vcap/packages/csi-nfs-plugin/rootfs ]; then
       mv /var/vcap/packages/csi-nfs-plugin/rootfs ${ROOTFS_DIR}/rootfs
