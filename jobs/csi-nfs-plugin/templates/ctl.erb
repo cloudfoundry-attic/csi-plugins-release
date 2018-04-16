@@ -16,6 +16,8 @@ case $1 in
     mkdir -p $RUN_DIR $LOG_DIR $ROOTFS_DIR
     mkdir -p $MOUNT_ROOT/csi-nfsplugin
     chmod 777 $MOUNT_ROOT/csi-nfsplugin
+    mount --bind $MOUNT_ROOT/csi-nfsplugin $MOUNT_ROOT/csi-nfsplugin
+    mount --make-shared $MOUNT_ROOT/csi-nfsplugin
 
     if [ -d /var/vcap/packages/csi-nfs-plugin/rootfs ]; then
       mv /var/vcap/packages/csi-nfs-plugin/rootfs ${ROOTFS_DIR}/rootfs
