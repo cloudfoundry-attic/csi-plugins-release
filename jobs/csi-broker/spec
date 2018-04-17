@@ -30,21 +30,21 @@ properties:
     description: "List of services and plans supported by CSI broker"
     default:
     - id: csi-nfs-service-id
-      name: "CSI NFS Service"
+      name: "csi-nfs"
       driver_name: csi-nfsplugin
       description: "CSI NFS Service (experimental)"
       plans:
       - id: csi-nfs-service-plan-id
-        name: "Free"
+        name: "free"
         description: "CSI NFS Service Plan"
         display_name: "CSI NFS Service Plan"
     - id: csi-local-service-id
-      name: "CSI Local Service"
+      name: "csi-local-volume"
       driver_name: com.github.jeffpak.local-node-plugin
       controller_address: 127.0.0.1:9860
       description: "CSI Local Service (experimental)"
       plans:
       - id: csi-local-service-plan-id
-        name: "Free"
+        name: "free"
         description: "CSI Local Service Plan"
         display_name: "CSI Local Service Plan"
