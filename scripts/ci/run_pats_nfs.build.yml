@@ -1,0 +1,19 @@
+---
+platform: linux
+
+rootfs_uri: docker:///cloudfoundry/diego-pipeline
+
+inputs:
+  - name: csi-plugins-release
+  - name: vars-store
+
+params:
+  CF_USERNAME: replace-me
+  CF_PASSWORD:
+  BROKER_PASSWORD:
+  CREATE_CONFIG:
+  BIND_CONFIG:
+  CF_API_ENDPOINT: replace-me
+  APPS_DOMAIN: replace-me
+run:
+  path: csi-plugins-release/scripts/ci/run_pats_withsetup
