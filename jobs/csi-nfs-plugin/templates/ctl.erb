@@ -14,16 +14,16 @@ case $1 in
 
   start)
     mkdir -p $RUN_DIR $LOG_DIR $ROOTFS_DIR
-    mkdir -p $MOUNT_ROOT/csi-nfsplugin
-    mkdir -p $MOUNT_ROOT/csi-nfsplugin/tmp
-    mkdir -p $MOUNT_ROOT/csi-nfsplugin/mounts
+    mkdir -p $MOUNT_ROOT/
+    mkdir -p $MOUNT_ROOT/tmp
+    mkdir -p $MOUNT_ROOT/mounts
 
-    chmod 777 $MOUNT_ROOT/csi-nfsplugin
-    chmod 777 $MOUNT_ROOT/csi-nfsplugin/tmp
-    chmod 777 $MOUNT_ROOT/csi-nfsplugin/mounts
+    chmod 777 $MOUNT_ROOT/
+    chmod 777 $MOUNT_ROOT/tmp
+    chmod 777 $MOUNT_ROOT/mounts
 
-    mount --bind $MOUNT_ROOT/csi-nfsplugin $MOUNT_ROOT/csi-nfsplugin
-    mount --make-shared $MOUNT_ROOT/csi-nfsplugin
+    mount --bind $MOUNT_ROOT $MOUNT_ROOT
+    mount --make-shared $MOUNT_ROOT
 
     if [ -d /var/vcap/packages/csi-nfs-plugin/rootfs ]; then
       mv /var/vcap/packages/csi-nfs-plugin/rootfs ${ROOTFS_DIR}/rootfs
