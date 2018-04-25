@@ -1,5 +1,5 @@
 ---
-final_name: csi-plugin
+final_name: csi-plugins
 blobstore:
   provider: s3
   options:
