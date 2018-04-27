@@ -2,4 +2,4 @@ set -e
 
 tar -xzf csi-nfs-plugin/rootfs.tgz -C ${BOSH_INSTALL_TARGET}
 
-cp csi-nfs-plugin/mapfs_linux_amd64 ${BOSH_INSTALL_TARGET}/rootfs/usr/bin/mapfs
+cp csi-nfs-plugin/mapfs_linux_amd64 ${BOSH_INSTALL_TARGET}/mapfs

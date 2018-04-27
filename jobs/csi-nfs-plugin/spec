@@ -5,6 +5,7 @@ templates:
   ctl.erb: bin/ctl
   config.json.erb: config.json
   csi-nfs-plugin.json.erb: csi-nfs-plugin.json
+  install.erb: bin/pre-start
 
 packages:
 - csi-nfs-plugin

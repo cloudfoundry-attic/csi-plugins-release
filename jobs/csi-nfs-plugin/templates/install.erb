@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e -x
+
+cp /var/vcap/packages/csi-nfs-plugin/mapfs /bin/mapfs
+
+chown root:vcap /bin/mapfs
+chmod 750 /bin/mapfs
+chmod u+s /bin/mapfs
+
