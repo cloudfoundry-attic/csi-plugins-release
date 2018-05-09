@@ -5,4 +5,3 @@ dependencies: []
 
 files:
 - csi-nfs-plugin/rootfs.tgz
-- csi-nfs-plugin/mapfs_linux_amd64
