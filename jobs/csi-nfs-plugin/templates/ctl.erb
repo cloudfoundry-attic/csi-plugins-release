@@ -51,6 +51,8 @@ case $1 in
   stop)
     /var/vcap/packages/runc/bin/runc kill csi-nfs-plugin KILL
 
+    umount $MOUNT_ROOT
+
     rm -f $PIDFILE
     ;;
 
