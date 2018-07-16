@@ -5,8 +5,8 @@ RUN_DIR=/var/vcap/sys/run/csi-nfs-plugin
 LOG_DIR=/var/vcap/sys/log/csi-nfs-plugin
 PIDFILE=$RUN_DIR/csi-nfs-plugin.pid
 ROOTFS_DIR=/var/vcap/data/csi-nfs-plugin
+SOURCE_ROOT="<%= p("csi-nfs-plugin.source_root_path") %>"
 MOUNT_ROOT="<%= p("csi-nfs-plugin.mount_root_path") %>"
-
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -22,7 +22,7 @@ case $1 in
     chmod 777 $MOUNT_ROOT/tmp
     chmod 777 $MOUNT_ROOT/mounts
 
-    mount --bind $MOUNT_ROOT $MOUNT_ROOT
+    mount --bind $SOURCE_ROOT $MOUNT_ROOT
     mount --make-shared $MOUNT_ROOT
 
     if [ -d /var/vcap/packages/csi-nfs-plugin/rootfs ]; then

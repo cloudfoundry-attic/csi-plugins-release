@@ -10,8 +10,11 @@ packages:
 - csi-nfs-plugin
 
 properties:
+  csi-nfs-plugin.source_root_path:
+    description: "the source of the shared bind mount that the csi plugin mounts into"
+    default: "/var/vcap/data/csisourceroot"
   csi-nfs-plugin.mount_root_path:
-    description: "the root path where the csi nfs plugin will mount volume into"
+    description: "the destination of the shared bind mount that the csi nfs plugin mounts into"
     default: "/var/vcap/data/csimountroot"
   csi-nfs-plugin.start_command:
     description: "the start command for the csi nfs plugin"
