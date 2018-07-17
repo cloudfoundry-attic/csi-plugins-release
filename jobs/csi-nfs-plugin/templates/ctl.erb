@@ -14,6 +14,10 @@ case $1 in
 
   start)
     mkdir -p $RUN_DIR $LOG_DIR $ROOTFS_DIR
+
+    mkdir -p $SOURCE_ROOT/
+    chmod 777 $SOURCE_ROOT/
+
     mkdir -p $MOUNT_ROOT/
     mkdir -p $MOUNT_ROOT/tmp
     mkdir -p $MOUNT_ROOT/mounts
