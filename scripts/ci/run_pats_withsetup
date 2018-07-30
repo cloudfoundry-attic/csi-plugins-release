@@ -31,7 +31,7 @@ check_param CREATE_CONFIG
 check_param BIND_CONFIG
 
 if [ -z "$CF_PASSWORD" ]; then
-    persi-ci/scripts/ci/bbl_bosh-get_env
+    persi-ci/scripts/ci/bbl_get_bosh_env
     source bosh-env/set-env.sh
 
     bosh_manifest_password_variable_name=cf_admin_password
@@ -39,7 +39,7 @@ if [ -z "$CF_PASSWORD" ]; then
 fi
 
 if [ -z "$BROKER_PASSWORD" ]; then
-    persi-ci/scripts/ci/bbl_bosh-get_env
+    persi-ci/scripts/ci/bbl_get_bosh_env
     source bosh-env/set-env.sh
 
     bosh_manifest_password_variable_name=csi-nfsbroker-password
