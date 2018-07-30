@@ -3,7 +3,6 @@
 set -e -x
 
 scripts_path=./$(dirname $0)
-eval $($scripts_path/get_paths.sh)
 
 usage () {
     echo "Usage: run-pats admin_user admin_password api_host apps_domain service_name plan_name broker_url broker_user broker_password create_config bind_config"
