@@ -10,6 +10,7 @@ image_resource:
 inputs:
   - name: csi-plugins-release
   - name: persi-ci
+  - name: director-state
 
 params:
   CF_USERNAME: replace-me
