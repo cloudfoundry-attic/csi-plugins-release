@@ -13,7 +13,7 @@ fi
 export PATH=$GOPATH/bin:$PATH
 
 absolute_path() {
-  (cd $1 && pwd)
+  (pushd $1 && pwd && popd)
 }
 
 base_path=$(absolute_path `dirname $0`)
