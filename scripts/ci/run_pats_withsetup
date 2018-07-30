@@ -4,7 +4,6 @@
 set -e -x
 
 scripts_path=./$(dirname $0)/..
-eval $($scripts_path/get_paths.sh)
 
 if [ "$(uname)" == "Darwin" ]; then
     export GOPATH=`greadlink -f ${scripts_path}/..`
@@ -45,14 +44,14 @@ fi
 go get github.com/onsi/ginkgo/ginkgo
 
 ${scripts_path}/run-pats \
-${CF_USERNAME} \
-${CF_PASSWORD} \
-${CF_API_ENDPOINT} \
-${APPS_DOMAIN} \
-${SERVICE_NAME} \
-${PLAN_NAME} \
-${BROKER_URL} \
-${BROKER_USER} \
-${BROKER_PASSWORD} \
-${CREATE_CONFIG} \
-${BIND_CONFIG}
+"${CF_USERNAME}" \
+"${CF_PASSWORD}" \
+"${CF_API_ENDPOINT}" \
+"${APPS_DOMAIN}" \
+"${SERVICE_NAME}" \
+"${PLAN_NAME}" \
+"${BROKER_URL}" \
+"${BROKER_USER}" \
+"${BROKER_PASSWORD}" \
+"${CREATE_CONFIG}" \
+"${BIND_CONFIG}"
