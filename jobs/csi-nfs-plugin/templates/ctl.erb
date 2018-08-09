@@ -33,9 +33,6 @@ case $1 in
       mv /var/vcap/packages/csi-nfs-plugin/rootfs ${ROOTFS_DIR}/rootfs
     fi
 
-    # add mapfs to the path
-    source /var/vcap/packages/mapfs/runtime.env
-
     echo $$ > $PIDFILE
 
     mkdir -p /var/vcap/data/csiplugins
