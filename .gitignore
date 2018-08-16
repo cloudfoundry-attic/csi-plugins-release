@@ -18,6 +18,7 @@ pkg
 /bin
 
 #intellij goo
+.idea/**
 *.iml
 
 # gosub and friends
