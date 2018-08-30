@@ -42,3 +42,9 @@ It should come as no suprise, then, that the CSI integration for Cloud Foundry b
 ### Deployment of Containerized Plugins
 
 ## More Resources
+https://github.com/cloudfoundry/csi-local-volume-release
+https://github.com/cloudfoundry/csi-plugins-release
+https://github.com/container-storage-interface/spec
+https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md
+https://arslan.io/2018/06/21/how-to-write-a-container-storage-interface-csi-plugin/
+
