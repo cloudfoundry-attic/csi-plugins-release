@@ -30,10 +30,10 @@ It should come as no suprise, then, that the CSI integration for Cloud Foundry b
 
 ### Components of the Cloud Foundry CSI Integration
 
-* [csibroker](https://github.com/cloudfoundry/csibroker) is a generic Open Service Broker API (OSBAPI) service broker that translates OSBAPI service instances and service bindings into calls to the CSI controller plugin.  For folks familiar with the kubernetes CSI integration, csibroker fulfills a similar function to the k8s [external-provisioner](https://github.com/kubernetes-csi/external-provisioner) container. csibroker must be configured with 
+* **[csibroker](https://github.com/cloudfoundry/csibroker)** is a generic Open Service Broker API (OSBAPI) service broker that translates OSBAPI service instances and service bindings into calls to the CSI controller plugin.  For folks familiar with the kubernetes CSI integration, csibroker fulfills a similar function to the k8s [external-provisioner](https://github.com/kubernetes-csi/external-provisioner) container. It is not strictly necessary to use csibroker as-is, but we hope to make it generic enough to bridge the gap between the OSBAPI and the CSI Controller interface.  If you find areas that require enhancement to meet your needs, please let us know in a [github issue](https://github.com/cloudfoundry/csi-plugins-release/issues). csibroker must be configured with 
   - connection information that tells it where to find the CSI Controller plugin 
   - a service catalog that maps human readable service and plan offerings into CSI ControllerCreateVolume data payloads (TBD in the current csibroker)
-  It is not strictly necessary to use csibroker as-is, but we hope to make it generic enough to bridge the gap between the OSBAPI and the CSI Controller interface.  If you find areas that require enhancement to meet your needs, please let us know in a [github issue](https://github.com/cloudfoundry/csi-plugins-release/issues)
+* **volman** The Diego Volume Manager (volman) contains a new ["CSI Plugin Discoverer"](https://github.com/cloudfoundry/volman/blob/master/voldiscoverers/csiplugin_discoverer.go) that is responsible for discovering and connecting to Node plugins available on the Diego cell.  Node plugins must advertise themselves to Diego by placing a json spec file in a predetermined path on the cell.  (Typically this path is `/var/vcap/data/csiplugins` but it can be modified in a BOSH property on the `rep` job.)  
 
 ## Deployment Considerations
 
@@ -42,9 +42,9 @@ It should come as no suprise, then, that the CSI integration for Cloud Foundry b
 ### Deployment of Containerized Plugins
 
 ## More Resources
-https://github.com/cloudfoundry/csi-local-volume-release
-https://github.com/cloudfoundry/csi-plugins-release
-https://github.com/container-storage-interface/spec
-https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md
-https://arslan.io/2018/06/21/how-to-write-a-container-storage-interface-csi-plugin/
+- https://github.com/cloudfoundry/csi-local-volume-release
+- https://github.com/cloudfoundry/csi-plugins-release
+- https://github.com/container-storage-interface/spec
+- https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md
+- https://arslan.io/2018/06/21/how-to-write-a-container-storage-interface-csi-plugin/
 
