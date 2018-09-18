@@ -64,8 +64,32 @@ The spec file should be placed in `/var/vcap/data/csiplugins` and have a `.json`
 Note that the "Name" field is purely for readability.  Diego will contact the CSI `GetPluginInfo()` RPC to determine the ID of the plugin.
 
 ### Deployment of Containerized Plugins
+As mentioned above, Cloud Foundry imposes no hard contstraints on how CSI plugins should be started up or monitored within the Cloud Foundry platform. Plugins need only be available on the correct node. However, since other COs (notably Mesos and Kubernetes) plan to promote packaging and deployment of plugins as containers, useful plugins may only be available in container packaging.  In order to make it relatively straightforward to deploy these plugins into CF, we've created the [csi-plugins-release](https://github.com/cloudfoundry/csi-plugins-release).  
 
-## More Resources
+#### Deployment of Node Plugins to the Diego Cell
+In less opionionated platforms, it is possible to simply deploy a node plugin to the existing container runtime running on the worker node. In Cloud Foundry, that runtime is Garden.  But Garden is quite opinionated, and focused on security, and as a result, the POSIX Capabilities and mount propagation options required to successfully mount a remote share and propagate it back to the root namespace are not available to Garden containers.
+
+As a workaround, we created a simple BOSH job that runs the container using `runc` using a bosh packaged rootfs and an OCI container spec that gives the container the various capabilities it will need in order to mount volumes.  This release packages an NFS plugin container built with [a Dockerfile](https://github.com/kubernetes-csi/drivers/blob/master/pkg/nfs/dockerfile/Dockerfile) as a bosh package, and runs it with runc and [an OCI container spec](https://github.com/cloudfoundry/csi-plugins-release/blob/master/jobs/csi-nfs-plugin/templates/config.json.erb)
+
+There are a few notable requirements for the container in order to make this deployment mode work for you:
+1) The container requires a [very open set of capabilities](https://github.com/cloudfoundry/csi-plugins-release/blob/master/jobs/csi-nfs-plugin/templates/config.json.erb#L17-L23) including CAP_SYSADMIN so that it can perform mounts and communicate on low numbered ports.
+1) The container must have [rootfs mount propagation](https://github.com/cloudfoundry/csi-plugins-release/blob/master/jobs/csi-nfs-plugin/templates/config.json.erb#L166) set to "shared".  This allows mounts from inside the container to propagate out to the root namespace.
+1) The directory in the root namespace where we will put new volume mounts must itself be a mount point, [and must be shared as well](https://github.com/cloudfoundry/csi-plugins-release/blob/master/jobs/csi-nfs-plugin/templates/ctl.erb#L29-L30).  This will allow the mount to propagate back from the rootfs directory to the source directory where we'll plan to use it.
+1) For plugins that will perform fuse mounts, `/dev/fuse` must be mounted into the container.
+
+#### Deployment of Controller Plugins in Cloud Foundry
+There is considerably more flexibility for CSI Controller Plugins than Node plugins, because controller plugins typically do not have special requirements.  For many plugin builds, the node plugin and controller plugin may be the same binary.  In those instances, it is entirely appropriate to use the running node plugin as a controller plugin, and to connect to it using BOSH DNS.  
+
+If the controller plugin is a distinct binary or container, and you wish to run it as such, we believe that in most cases it can simply be pushed to Cloud Foundry, and csibroker can be pushed alongside it to connect it to cloudfoundry as a service broker.  Note that in this deployment scenario, it will be necessary to configure tcp routing so that the csibroker can reach the controller plugin using GRPC.  That should look something like this:
+
+```bash
+cf create-shared-domain tcp.gorgophone.cf-app.com --router-group default-tcp
+cf create-route s tcp.gorgophone.cf-app.com --random-port
+cf routes
+cf map-route csi-docker tcp.gorgophone.cf-app.com --port <PORT>
+```
+
+## Useful Links
 - https://github.com/cloudfoundry/csi-local-volume-release
 - https://github.com/cloudfoundry/csi-plugins-release
 - https://github.com/container-storage-interface/spec
