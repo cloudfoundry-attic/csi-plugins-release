@@ -3,6 +3,7 @@ name: csi-broker
 
 templates:
   ctl.erb: bin/csi_broker_ctl
+  kube_config.erb: config/kube.yml
   service.json.erb: config/service.json
 
 packages:
@@ -26,6 +27,8 @@ properties:
   csi-broker.password:
     description: "Basic auth password to verify on incoming Service Broker requests"
     default: "admin"
+  csi-broker.kube_config:
+    description: "The full Kubernetes configuration file content. Note: Avoid using certificates file references, instead you
   csi-broker.services:
     description: "List of services and plans supported by CSI broker"
     default:

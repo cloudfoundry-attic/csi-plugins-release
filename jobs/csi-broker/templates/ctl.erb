@@ -35,6 +35,7 @@ case $1 in
       --dataDir="<%= p("csi-broker.data-dir") %>" \
       --username="<%= p("csi-broker.username") %>" \
       --password="<%= p("csi-broker.password") %>" \
+      --kubeConfig=/var/vcap/jobs/csi-broker/config/kube.yml \
       2> >(tee -a $LOG_DIR/csi-broker.stderr.log | logger -p user.error -t vcap.csi-broker) \
       1> >(tee -a $LOG_DIR/csi-broker.stdout.log | logger -p user.info -t vcap.csi-broker)
 

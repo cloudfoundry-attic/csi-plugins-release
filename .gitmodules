@@ -70,3 +70,12 @@
 [submodule "src/github.com/nu7hatch/gouuid"]
 	path = src/github.com/nu7hatch/gouuid
 	url = https://github.com/nu7hatch/gouuid
+[submodule "src/k8s.io/client-go"]
+	path = src/k8s.io/client-go
+	url = https://github.com/kubernetes/client-go
+[submodule "src/k8s.io/api"]
+	path = src/k8s.io/api
+	url = https://github.com/kubernetes/api
+[submodule "src/github.com/golang/glog"]
+	path = src/github.com/golang/glog
+	url = https://github.com/golang/glog
