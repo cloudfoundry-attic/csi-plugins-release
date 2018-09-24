@@ -40,6 +40,7 @@
       csi-broker:
         username: csi-nfsbroker
         password: ((csi-nfsbroker-password))
+        kube_config: ((kube-config))
 
 - type: replace
   path: /variables/-
