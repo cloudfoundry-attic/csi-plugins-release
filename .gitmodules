@@ -70,3 +70,9 @@
 [submodule "src/github.com/nu7hatch/gouuid"]
 	path = src/github.com/nu7hatch/gouuid
 	url = https://github.com/nu7hatch/gouuid
+[submodule "src/code.cloudfoundry.org/credhub-cli"]
+	path = src/code.cloudfoundry.org/credhub-cli
+	url = https://github.com/cloudfoundry-incubator/credhub-cli.git
+[submodule "src/gopkg.in/DATA-DOG/go-sqlmock.v1"]
+	path = src/gopkg.in/DATA-DOG/go-sqlmock.v1
+	url = https://gopkg.in/DATA-DOG/go-sqlmock.v1
