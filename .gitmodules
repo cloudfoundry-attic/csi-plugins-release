@@ -79,3 +79,87 @@
 [submodule "src/github.com/golang/glog"]
 	path = src/github.com/golang/glog
 	url = https://github.com/golang/glog
+[submodule "src/cloud.google.com/go"]
+	path = src/cloud.google.com/go
+	url = https://github.com/GoogleCloudPlatform/google-cloud-go
+[submodule "src/github.com/Azure/go-autorest"]
+	path = src/github.com/Azure/go-autorest
+	url = https://github.com/Azure/go-autorest
+[submodule "src/github.com/davecgh/go-spew"]
+	path = src/github.com/davecgh/go-spew
+	url = https://github.com/davecgh/go-spew
+[submodule "src/github.com/dgrijalva/jwt-go"]
+	path = src/github.com/dgrijalva/jwt-go
+	url = https://github.com/dgrijalva/jwt-go
+[submodule "src/github.com/docker/spdystream"]
+	path = src/github.com/docker/spdystream
+	url = https://github.com/docker/spdystream
+[submodule "src/github.com/ghodss/yaml"]
+	path = src/github.com/ghodss/yaml
+	url = https://github.com/ghodss/yaml
+[submodule "src/github.com/gogo/protobuf"]
+	path = src/github.com/gogo/protobuf
+	url = https://github.com/gogo/protobuf
+[submodule "src/github.com/golang/groupcache"]
+	path = src/github.com/golang/groupcache
+	url = https://github.com/golang/groupcache
+[submodule "src/github.com/google/btree"]
+	path = src/github.com/google/btree
+	url = https://github.com/google/btree
+[submodule "src/github.com/google/gofuzz"]
+	path = src/github.com/google/gofuzz
+	url = https://github.com/google/gofuzz
+[submodule "src/github.com/googleapis/gnostic"]
+	path = src/github.com/googleapis/gnostic
+	url = https://github.com/googleapis/gnostic
+[submodule "src/github.com/gophercloud/gophercloud"]
+	path = src/github.com/gophercloud/gophercloud
+	url = https://github.com/gophercloud/gophercloud
+[submodule "src/github.com/gregjones/httpcache"]
+	path = src/github.com/gregjones/httpcache
+	url = https://github.com/gregjones/httpcache
+[submodule "src/github.com/hashicorp/golang-lru"]
+	path = src/github.com/hashicorp/golang-lru
+	url = https://github.com/hashicorp/golang-lru
+[submodule "src/github.com/imdario/mergo"]
+	path = src/github.com/imdario/mergo
+	url = https://github.com/imdario/mergo
+[submodule "src/github.com/json-iterator/go"]
+	path = src/github.com/json-iterator/go
+	url = https://github.com/json-iterator/go
+[submodule "src/github.com/modern-go/concurrent"]
+	path = src/github.com/modern-go/concurrent
+	url = https://github.com/modern-go/concurrent
+[submodule "src/github.com/modern-go/reflect2"]
+	path = src/github.com/modern-go/reflect2
+	url = https://github.com/modern-go/reflect2
+[submodule "src/github.com/peterbourgon/diskv"]
+	path = src/github.com/peterbourgon/diskv
+	url = https://github.com/peterbourgon/diskv
+[submodule "src/github.com/pmezard/go-difflib"]
+	path = src/github.com/pmezard/go-difflib
+	url = https://github.com/pmezard/go-difflib
+[submodule "src/github.com/spf13/pflag"]
+	path = src/github.com/spf13/pflag
+	url = https://github.com/spf13/pflag
+[submodule "src/github.com/stretchr/testify"]
+	path = src/github.com/stretchr/testify
+	url = https://github.com/stretchr/testify
+[submodule "src/golang.org/x/oauth2"]
+	path = src/golang.org/x/oauth2
+	url = https://github.com/golang/oauth2
+[submodule "src/golang.org/x/sys"]
+	path = src/golang.org/x/sys
+	url = https://github.com/golang/sys
+[submodule "src/golang.org/x/time"]
+	path = src/golang.org/x/time
+	url = https://github.com/golang/time
+[submodule "src/gopkg.in/inf.v0"]
+	path = src/gopkg.in/inf.v0
+	url = https://github.com/go-inf/inf
+[submodule "src/k8s.io/apimachinery"]
+	path = src/k8s.io/apimachinery
+	url = https://github.com/kubernetes/apimachinery
+[submodule "src/k8s.io/kube-openapi"]
+	path = src/k8s.io/kube-openapi
+	url = https://github.com/kubernetes/kube-openapi
