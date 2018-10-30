@@ -10,6 +10,12 @@ MOUNT_ROOT="<%= p("csi-nfs-plugin.mount_root_path") %>"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+SCRIPT=$(basename $0)
+mkdir -p /var/vcap/sys/log/monit
+
+exec 1>> /var/vcap/sys/log/monit/${SCRIPT}.log
+exec 2>> /var/vcap/sys/log/monit/${SCRIPT}.err.log
+
 case $1 in
 
   start)

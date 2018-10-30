@@ -7,7 +7,6 @@ templates:
 
 packages:
 - golang-csi-plugins
-- csi-plugins-pid-utils
 - csibroker
 
 properties:
