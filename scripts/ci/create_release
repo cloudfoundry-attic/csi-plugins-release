@@ -5,8 +5,6 @@ set -x -e
 version=`cat csi-plugins-version/number`
 pushd csi-plugins-release
 
-rm -rf .final_builds
-
 bosh -n create-release --tarball=dev_releases/csi-plugins/csi-plugins-$version.tgz --version $version --name csi-plugins --force
 mv dev_releases/csi-plugins/csi-plugins-$version.tgz ../created-plugins-release/csi-plugins-$version.tgz
 popd
