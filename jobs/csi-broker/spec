@@ -6,7 +6,6 @@ templates:
   service.json.erb: config/service.json
 
 packages:
-- golang-csi-plugins
 - csibroker
 
 properties:
