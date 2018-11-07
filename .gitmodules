@@ -4,6 +4,7 @@
 [submodule "src/code.cloudfoundry.org/csibroker"]
 	path = src/code.cloudfoundry.org/csibroker
 	url = https://github.com/cloudfoundry/csibroker
+	branch = master
 [submodule "src/code.cloudfoundry.org/csishim"]
 	path = src/code.cloudfoundry.org/csishim
 	url = https://github.com/cloudfoundry/csishim
@@ -19,6 +20,7 @@
 [submodule "src/code.cloudfoundry.org/service-broker-store"]
 	path = src/code.cloudfoundry.org/service-broker-store
 	url = https://github.com/cloudfoundry/service-broker-store
+	branch = master
 [submodule "src/github.com/container-storage-interface/spec"]
 	path = src/github.com/container-storage-interface/spec
 	url = https://github.com/container-storage-interface/spec
@@ -61,21 +63,10 @@
 [submodule "src/gopkg.in/yaml.v2"]
 	path = src/gopkg.in/yaml.v2
 	url = https://gopkg.in/yaml.v2
-[submodule "src/code.cloudfoundry.org/persi-acceptance-tests"]
-	path = src/code.cloudfoundry.org/persi-acceptance-tests
-	url = https://github.com/cloudfoundry/persi-acceptance-tests
-[submodule "src/github.com/cloudfoundry-incubator/cf-test-helpers"]
-	path = src/github.com/cloudfoundry-incubator/cf-test-helpers
-	url = https://github.com/cloudfoundry-incubator/cf-test-helpers
-[submodule "src/github.com/nu7hatch/gouuid"]
-	path = src/github.com/nu7hatch/gouuid
-	url = https://github.com/nu7hatch/gouuid
 [submodule "src/code.cloudfoundry.org/credhub-cli"]
 	path = src/code.cloudfoundry.org/credhub-cli
-	url = https://github.com/cloudfoundry-incubator/credhub-cli.git
+	url = https://github.com/cloudfoundry-incubator/credhub-cli
 [submodule "src/gopkg.in/DATA-DOG/go-sqlmock.v1"]
 	path = src/gopkg.in/DATA-DOG/go-sqlmock.v1
 	url = https://gopkg.in/DATA-DOG/go-sqlmock.v1
-[submodule "src/github.com/zbiljic/go-filelock"]
-	path = src/github.com/zbiljic/go-filelock
-	url = https://github.com/zbiljic/go-filelock
+	branch = master
