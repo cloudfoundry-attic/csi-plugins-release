@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e -x
+
+# ensure gosub is installed (this will recompile it only if necessary)
+go get github.com/vito/gosub
+go install github.com/vito/gosub
+
+{
+  gosub list -app code.cloudfoundry.org/csibroker/...
+
+  # separate test and binary dependencies
+  gosub list -test code.cloudfoundry.org/csibroker/...
+  gosub list -test code.cloudfoundry.org/service-broker-store/...
+} > /tmp/packages
+
+cat /tmp/packages | xargs gosub sync
