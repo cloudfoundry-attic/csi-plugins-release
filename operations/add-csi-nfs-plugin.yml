@@ -25,21 +25,22 @@
     jobs:
     - name: csi-broker
       release: csi-plugins
+      properties:
+        csi-broker:
+          username: csi-nfsbroker
+          password: ((csi-nfsbroker-password))
     - name: route_registrar
       release: routing
-    properties:
-      route_registrar:
-        routes:
-        - name: csi-nfsbroker
-          port: 8999
-          registration_interval: 20s
-          tags:
-            component: csi-nfsbroker
-          uris:
-          - csi-nfsbroker.gorgophone.cf-app.com
-      csi-broker:
-        username: csi-nfsbroker
-        password: ((csi-nfsbroker-password))
+      properties:
+        route_registrar:
+          routes:
+          - name: csi-nfsbroker
+            port: 9020
+            registration_interval: 20s
+            tags:
+              component: csi-nfsbroker
+            uris:
+            - csi-nfsbroker.gorgophone.cf-app.com
 
 - type: replace
   path: /variables/-
